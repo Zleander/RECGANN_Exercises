@@ -190,20 +190,40 @@ public class MultiLayerPerceptron {
     }
     
     public void backwardPass(final double[] target) {
+
         //
         // inject the output/target discrepancy into this.bwbuffer. Note that
         // this.bwbuffer functions analogously to this.net but is used to
         // store into "back-flowing" inputs (deltas).
         //
         
-        // ...
+        for (int k = 0; k < this.layer[this.layersnum - 1]; k++) {
+            int output_i = this.layersnum - 1;
+            this.bwbuffer[output_i][k] = this.act[output_i][k] - target[k];
+            this.delta[output_i][k] = sigmoidDx(this.net[output_i][k]) * this.bwbuffer[output_i][k];
+        }
+        
         
         //
         // back-propagate the error through the network -- we compute the deltas --
         // starting with the output layer.
         //
 
-        // ...
+        for (int l = this.layersnum - 2; l >= 0; l--) {
+
+            for (int h = 0; h < this.layer[l]; h++) {
+
+                this.bwbuffer[l][h] = 0;
+
+                for (int k=0; k< this.layer[l+1]; k++) {
+                    this.bwbuffer[l][h] += this.weights[l+1][h][k] * this.delta[l+1][k];
+
+                }
+                this.delta[l][h] = sigmoidDx(this.net[l][h]) * this.bwbuffer[l][h];
+            
+
+            }
+        }
         
         
         // 
@@ -211,6 +231,14 @@ public class MultiLayerPerceptron {
         //
         // this.dweights !!!!
         // ...
+
+        for (int l = this.layersnum - 2; l >= 0; l--) {
+            for (int h = 0; h < this.layer[l]; h++) {
+                for (int k=0; k< this.layer[l+1]; k++) {
+                    this.dweights[l][h][k] = this.act[l][h] * this.delta[l+1][k];
+                }
+            }
+        }
 
     }
     
