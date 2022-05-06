@@ -199,8 +199,7 @@ public class MultiLayerPerceptron {
         
         for (int k = 0; k < this.layer[this.layersnum - 1]; k++) {
             int output_i = this.layersnum - 1;
-            this.bwbuffer[output_i][k] = this.act[output_i][k] - target[k];
-            this.delta[output_i][k] = sigmoidDx(this.net[output_i][k]) * this.bwbuffer[output_i][k];
+            this.delta[output_i][k] = sigmoidDx(this.net[output_i][k]) * (this.act[output_i][k] - target[k]);
         }
         
         
@@ -209,19 +208,19 @@ public class MultiLayerPerceptron {
         // starting with the output layer.
         //
 
-        for (int l = this.layersnum - 2; l >= 0; l--) {
+        for (int l = this.layersnum - 1; l >= 2; l--) {
 
-            for (int h = 0; h < this.layer[l]; h++) {
+            for (int h = 0; h < this.layer[l-1]; h++) {
+                // System.out.println(l);
+                // System.out.println(h);
 
-                this.bwbuffer[l][h] = 0;
+                this.bwbuffer[l-1][h] = 0;
 
-                for (int k=0; k< this.layer[l+1]; k++) {
-                    this.bwbuffer[l][h] += this.weights[l+1][h][k] * this.delta[l+1][k];
+                for (int k=0; k< this.layer[l]; k++) {
+                    this.bwbuffer[l-1][h] += this.weights[l][h][k] * this.delta[l][k];
 
                 }
-                this.delta[l][h] = sigmoidDx(this.net[l][h]) * this.bwbuffer[l][h];
-            
-
+                this.delta[l-1][h] = sigmoidDx(this.net[l-1][h]) * this.bwbuffer[l-1][h];
             }
         }
         
@@ -232,10 +231,10 @@ public class MultiLayerPerceptron {
         // this.dweights !!!!
         // ...
 
-        for (int l = this.layersnum - 2; l >= 0; l--) {
-            for (int h = 0; h < this.layer[l]; h++) {
-                for (int k=0; k< this.layer[l+1]; k++) {
-                    this.dweights[l][h][k] = this.act[l][h] * this.delta[l+1][k];
+        for (int l = this.layersnum - 1; l > 0; l--) {
+            for (int h = 0; h < this.layer[l-1]; h++) {
+                for (int k=0; k< this.layer[l]; k++) {
+                    this.dweights[l][h][k] = this.act[l-1][h] * this.delta[l][k];
                 }
             }
         }
@@ -344,10 +343,21 @@ public class MultiLayerPerceptron {
             // while considering the shuffled order and update the weights 
             // immediately after each sample
             //
+            for (int j = 0; j < indices.length; j++) {
+                double[] output = forwardPass(input[j]);
+                backwardPass(target[j]);
+                readDWeights(dweights);
+
+                for (int k=0; k < dweights.length; k++) {
+                    weightsupdate[k] =  -learningrate * dweights[k] + momentumrate * weightsupdate[k];
+                    weights[k] += weightsupdate[k];
+                }
+                writeWeights(weights);
+                errorsum += RMSE(output, target[j]);
+            }
 
             // ...
             
-            //
             error = errorsum / (double)(input.length);
             if (listener != null) listener.afterEpoch(i + 1, error);
         }
