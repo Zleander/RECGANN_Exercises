@@ -388,7 +388,7 @@ public class MultiLayerPerceptron {
                     weightsupdate[w] = dw;
                     
                 }
-                //
+                //llllllliim        
                 this.writeWeights(weights);
             }
             //

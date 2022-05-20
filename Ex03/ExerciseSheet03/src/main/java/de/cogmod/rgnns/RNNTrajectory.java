@@ -68,18 +68,19 @@ public class RNNTrajectory {
         // be deactivated using net.setBias(layer, false),
         // where layer gives the layer index (1 = is the first hidden layer).
         //
-        final RecurrentNeuralNetwork net = new RecurrentNeuralNetwork(1, 16, 2);
+        final RecurrentNeuralNetwork net = new RecurrentNeuralNetwork(1, 16, 2); //(1, 32, 16, 2); // (1, 16, 2)
         //
         // we disable all biases.
         //
         net.setBias(1, false);
         net.setBias(2, false);
+        //net.setBias(3, false);
         //
         // perform training.
         //
-        final int epochs = 100000;
-        final double learningrate = 0.00002;
-        final double momentumrate = 0.95;
+        final int epochs = 100000; // 100000
+        final double learningrate =  0.00002; // 0.00002
+        final double momentumrate = 0.95; // 0.95
         //
         // generate initial weights and prepare the RNN buffer
         // for BPTT over the required number of time steps.
