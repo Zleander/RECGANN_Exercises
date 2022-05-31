@@ -2,10 +2,6 @@ package de.cogmod.rgnns;
 
 import java.util.Random;
 
-import de.cogmod.rgnns.misc.BasicLearningListener;
-import de.cogmod.rgnns.misc.Spiral;
-import de.cogmod.rgnns.misc.TrajectoryGenerator;
-
 public class GradientMeasurement {
 	
 	private static Random rnd = new Random(100L);
@@ -34,12 +30,6 @@ public class GradientMeasurement {
         //
         net.setBias(1, false);
         net.setBias(2, false);
-        //
-        // perform training.
-        //
-        final int epochs = 100000; // 100000
-        final double learningrate =  0.00002; // 0.00002
-        final double momentumrate = 0.95; // 0.95
         //
         // generate initial weights and prepare the RNN buffer
         // for BPTT over the required number of time steps.
