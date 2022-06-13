@@ -1,0 +1,56 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-DELearningESN<ExerciseSheet04_1f6f4df5>",
+            "request": "launch",
+            "mainClass": "de.cogmod.rgnns.DELearningESN",
+            "projectName": "ExerciseSheet04_1f6f4df5"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-DifferentialEvolutionExample<ExerciseSheet04_1f6f4df5>",
+            "request": "launch",
+            "mainClass": "de.cogmod.rgnns.examples.DifferentialEvolutionExample",
+            "projectName": "ExerciseSheet04_1f6f4df5"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-ReservoirToolsExample<ExerciseSheet04_1f6f4df5>",
+            "request": "launch",
+            "mainClass": "de.cogmod.rgnns.examples.ReservoirToolsExample",
+            "projectName": "ExerciseSheet04_1f6f4df5"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-SerializerExample<ExerciseSheet04_1f6f4df5>",
+            "request": "launch",
+            "mainClass": "de.cogmod.rgnns.examples.SerializerExample",
+            "projectName": "ExerciseSheet04_1f6f4df5"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-TeacherForcingExample<ExerciseSheet04_1f6f4df5>",
+            "request": "launch",
+            "mainClass": "de.cogmod.rgnns.examples.TeacherForcingExample",
+            "projectName": "ExerciseSheet04_1f6f4df5"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-SpaceSimulationMain<ExerciseSheet04_1f6f4df5>",
+            "request": "launch",
+            "mainClass": "de.cogmod.spacecombat.SpaceSimulationMain",
+            "projectName": "ExerciseSheet04_1f6f4df5"
+        }
+    ]
+}

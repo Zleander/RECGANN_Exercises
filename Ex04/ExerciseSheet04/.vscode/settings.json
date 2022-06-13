@@ -1,0 +1,9 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "libs/ejml-core-0.32.jar",
+        "libs/ejml-ddense-0.32.jar",
+        "libs/ejml-simple-0.32.jar",
+        "libs/jannlab.jar"
+    ]
+}
