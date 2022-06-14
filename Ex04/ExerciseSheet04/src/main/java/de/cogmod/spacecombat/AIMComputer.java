@@ -1,8 +1,12 @@
 package de.cogmod.spacecombat;
 
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
+
+import javax.xml.crypto.dsig.spec.ExcC14NParameterSpec;
 
 import de.cogmod.rgnns.EchoStateNetwork;
 import de.cogmod.rgnns.RecurrentNeuralNetwork;
@@ -14,12 +18,26 @@ import de.cogmod.spacecombat.simulation.SpaceSimulation;
 import de.cogmod.spacecombat.simulation.SpaceSimulationObserver;
 import de.jannlab.io.Serializer;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+
 /**
  * @author Sebastian Otte
  */
 public class AIMComputer implements SpaceSimulationObserver {
 
     public final static int PREDICTION_LENGTH = 100;
+
+    final int RECORING_LENGTH = 1000;
+    int recording_count = 0;
+    final boolean RECORD = false;
     
     private EnemySpaceShip enemy        = null;
     private boolean        targetlocked = false;
@@ -63,11 +81,19 @@ public class AIMComputer implements SpaceSimulationObserver {
         }
     }
     
-    private Vector3d[] generateESNFutureProjection(final int timesteps) {
-    	//
-    	// TODO: Implement me.
-    	//
-    	return null;
+    private Vector3d[] generateESNFutureProjection(final int timesteps){
+    	Vector3d last           = this.enemy.getRelativePosition();
+        final Vector3d[] result = new Vector3d[timesteps];
+        
+
+        double[] last_arr = new double[]{last.x, last.y, last.z};
+        double[] result_arr = this.enemyesn.forwardPass(last_arr);
+        result[0] = new Vector3d(result_arr[0], result_arr[1], result_arr[2]);
+        for (int t=1; t<timesteps; t++) {
+            result_arr = this.enemyesn.forwardPassOscillator();
+            result[t] = new Vector3d(result_arr[0], result_arr[1], result_arr[2]);
+        }
+    	return result;
     }
     
     // maybe only required for dummy trajectory.
@@ -113,12 +139,26 @@ public class AIMComputer implements SpaceSimulationObserver {
                 enemyrelativeposition.y,
                 enemyrelativeposition.z
             };
-            //
-            // TODO: Update trained ESN with current observation (teacher forcing) ...
-            //
             
-            // ...
+            if (RECORD) {
+                if (recording_count < 1000) {
+                    System.out.println(recording_count);
+                    try{
+                        FileWriter dataCollector = new FileWriter("combat_sequence.txt", true);
+                        dataCollector.write(String.format(Locale.US, "%f, %f, %f\n", enemyrelativeposition.x, enemyrelativeposition.y, enemyrelativeposition.z));
+                        dataCollector.close();
+                        recording_count++;
+                    } catch(IOException e){
+                        System.out.println("UFFFF");
+                    }
+                }
+                else {
+                    System.out.println("Recording complete");
+                }
+            }
             
+            this.enemyesn.teacherForcing(update);
+
             //
             // use copy of the RNN to generate future projection (replace dummy method).
             //
@@ -150,23 +190,20 @@ public class AIMComputer implements SpaceSimulationObserver {
             //
             // load esn.
             //
-            final int reservoirsize = 1; // use reasonable value here.
+            final int reservoirsize = 10; // use reasonable value here.
             this.enemyesn     = new EchoStateNetwork(3, reservoirsize, 3);
             this.enemyesncopy = new EchoStateNetwork(3, reservoirsize, 3);
-            //
-            // TODO: load pretrained ESN.
-            //
-            /* // !!! uncomment block to load ESN weight from file.
             
-            final String esnweightsfile = (
+            // !!! uncomment block to load ESN weight from file.
+            
+            /*final String esnweightsfile = (
                 "data/esn-3-" + 
                 reservoirsize + "-3.weights"
             );
             final double[] weights = Serializer.read(esnweightsfile);
             //
             this.enemyesn.writeWeights(weights);
-            this.enemyesncopy.writeWeights(weights);
-            */
+            this.enemyesncopy.writeWeights(weights);*/
             //
         } catch (Exception e) {
             throw new RuntimeException(e);

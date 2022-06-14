@@ -102,31 +102,40 @@ public class EchoStateNetwork extends RecurrentNeuralNetwork {
         int outputsize = this.getAct()[this.getOutputLayer()].length;
 
         // we only have to set the output weights, using least squates optimization, so W_out = pseudoinv(X) @ Z,
-        // where X is the matrix of hidden activations of size (training, reservoirsize),
+        // where X is the matrix of hidden activations of size (training, reservoirsize+1),
         // and Z is the matrix of size (training, outputsize) that contains the targets (in our case, the sequence values at the next timestep).
-        // W_out has size (reservoirsize, outputsize).
+        // W_out has size (reservoirsize+1, outputsize). (+1 because of biases)
 
         // First we need to calculate the matrix X by repeatedly executing forward passes through the ESN.
         // Execute washout and training phase using teacher forcing:
-        for (int t = 0; t < washout+training; t++){
+        double[][] X = new double[training][reservoirsize+1];
+        forwardPass(sequence[0]);
+        for (int t = 1; t < washout+training; t++){
             teacherForcing(sequence[t]);
             forwardPassOscillator();
+            if (t >= washout) {
+                for (int j = 0; j < reservoirsize; j++) { // X[t,:] = hidden activations
+                    final double[][][] act = this.getAct();
+                    X[t-washout][j] = act[1][j][0]; // 1 is the hidden layer, j is the neuron and t is the timestep
+                }
+                X[t-washout][reservoirsize] = 1;
+            }
         }
 
         // extract X as the activations from the training phase
-        double[][] X = new double[training][reservoirsize];
-        for (int t = washout; t < washout+training; t++){
+        
+        /*for (int t = washout; t < washout+training; t++){
             for (int j = 0; j < reservoirsize; j++) { // X[t,:] = hidden activations
                 final double[][][] act = this.getAct();
                 X[t][j] = act[1][j][t]; // 1 is the hidden layer, j is the neuron and t is the timestep
             }
-        }
+        }*/
 
         // construct Z = sequence[washout+1:training+washout+1,:]
         double[][] Z = new double[training][outputsize];
         for (int t = washout+1; t < washout+training+1; t++){
             for (int j = 0; j < outputsize; j++) {
-                Z[t][j] = sequence[t][j];
+                Z[t-washout-1][j] = sequence[t][j];
             }
         }
 
@@ -136,11 +145,11 @@ public class EchoStateNetwork extends RecurrentNeuralNetwork {
         // Now evaluate the network in the test phase.
         double[][] predictions = new double[test][outputsize];
         double[][] test_targets = new double[test][outputsize];
-        for (int t = washout+training; t < washout+training+test; t++) {
+        for (int t = 0; t < test; t++) {
             forwardPassOscillator();
             for (int i = 0; i < outputsize; i++) {
-                predictions[t][i] = this.getAct()[this.getOutputLayer()][i][t];
-                test_targets[t][i] = sequence[t][i];
+                predictions[t][i] = this.getAct()[this.getOutputLayer()][i][0]; // oh we could probably use the return value from the function above
+                test_targets[t][i] = sequence[t+washout+training][i];
             }
         }
         double error = RMSE(predictions, test_targets);
