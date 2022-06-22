@@ -82,7 +82,7 @@ public class EchoStateNetwork extends RecurrentNeuralNetwork {
         //
         final int n = act[outputlayer].length;
         //
-        final int t = this.getLastInputLength() - 1;
+        final int t = this.getLastInputLength() > 0 ? (this.getLastInputLength() - 1): this.getLastInputLength(); // dirty fix for Index out of bounds error
         //
         for (int i = 0; i < n; i++) {
             act[outputlayer][i][t] = target[i];
@@ -114,8 +114,8 @@ public class EchoStateNetwork extends RecurrentNeuralNetwork {
             teacherForcing(sequence[t]);
             forwardPassOscillator();
             if (t >= washout) {
+                final double[][][] act = this.getAct();
                 for (int j = 0; j < reservoirsize; j++) { // X[t,:] = hidden activations
-                    final double[][][] act = this.getAct();
                     X[t-washout][j] = act[1][j][0]; // 1 is the hidden layer, j is the neuron and t is the timestep
                 }
                 X[t-washout][reservoirsize] = 1;
@@ -141,14 +141,15 @@ public class EchoStateNetwork extends RecurrentNeuralNetwork {
 
         // solve the linear equation system and store weights
         ReservoirTools.solveSVD(X, Z, this.outputweights);
+        //ReservoirTools.solveSVD(ReservoirTools.multiply(ReservoirTools.transpose(X), X), ReservoirTools.multiply(ReservoirTools.transpose(X), Z), this.outputweights);
 
         // Now evaluate the network in the test phase.
         double[][] predictions = new double[test][outputsize];
         double[][] test_targets = new double[test][outputsize];
         for (int t = 0; t < test; t++) {
-            forwardPassOscillator();
+            double[] output = forwardPassOscillator();
             for (int i = 0; i < outputsize; i++) {
-                predictions[t][i] = this.getAct()[this.getOutputLayer()][i][0]; // oh we could probably use the return value from the function above
+                predictions[t][i] = output[i];//this.getAct()[this.getOutputLayer()][i][0]; // oh we could probably use the return value from the function above
                 test_targets[t][i] = sequence[t+washout+training][i];
             }
         }

@@ -29,20 +29,14 @@ public class DELearningESN {
 	
     public static void main(String[] args) throws Exception {
 
-        //
-        // In this example, we use DifferentialEvolution
-        // so solve the same least squares problem as in
-        // ReservoirToolsExample.
-        //
-
-        double[][] sequence = loadSequence("combat_sequence.txt");
+        double[][] sequence = loadSequence("combat_sequence_5000.txt");
 
         final int input = 3;
         final int reservoirsize = 10;
         final int output = 3;
 
-        int washout = 100;
-        int training = 400; 
+        int washout = 500;
+        int training = 4000;
         int test = 500;
 
         EchoStateNetwork final_esn = new EchoStateNetwork(input, reservoirsize, output);
@@ -176,7 +170,4 @@ public class DELearningESN {
         //
         return result;
     }
-    
-    
- 
 }

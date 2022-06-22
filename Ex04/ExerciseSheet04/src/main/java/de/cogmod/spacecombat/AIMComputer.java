@@ -18,15 +18,8 @@ import de.cogmod.spacecombat.simulation.SpaceSimulation;
 import de.cogmod.spacecombat.simulation.SpaceSimulationObserver;
 import de.jannlab.io.Serializer;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
 
 /**
  * @author Sebastian Otte
@@ -35,7 +28,7 @@ public class AIMComputer implements SpaceSimulationObserver {
 
     public final static int PREDICTION_LENGTH = 100;
 
-    final int RECORING_LENGTH = 1000;
+    final int RECORDING_LENGTH = 5000;
     int recording_count = 0;
     final boolean RECORD = false;
     
@@ -85,7 +78,6 @@ public class AIMComputer implements SpaceSimulationObserver {
     	Vector3d last           = this.enemy.getRelativePosition();
         final Vector3d[] result = new Vector3d[timesteps];
         
-
         double[] last_arr = new double[]{last.x, last.y, last.z};
         double[] result_arr = this.enemyesn.forwardPass(last_arr);
         result[0] = new Vector3d(result_arr[0], result_arr[1], result_arr[2]);
@@ -141,7 +133,7 @@ public class AIMComputer implements SpaceSimulationObserver {
             };
             
             if (RECORD) {
-                if (recording_count < 1000) {
+                if (recording_count < RECORDING_LENGTH) {
                     System.out.println(recording_count);
                     try{
                         FileWriter dataCollector = new FileWriter("combat_sequence.txt", true);
@@ -157,12 +149,13 @@ public class AIMComputer implements SpaceSimulationObserver {
                 }
             }
             
+            // Update trained ESN with current observation (teacher forcing)
             this.enemyesn.teacherForcing(update);
 
             //
             // use copy of the RNN to generate future projection (replace dummy method).
             //
-            this.enemytrajectoryprediction = this.generateDummyFutureProjection(PREDICTION_LENGTH);
+            this.enemytrajectoryprediction = this.generateESNFutureProjection(PREDICTION_LENGTH);
             //
             // grab the most recently launched missile that is alive.
             //
@@ -196,14 +189,14 @@ public class AIMComputer implements SpaceSimulationObserver {
             
             // !!! uncomment block to load ESN weight from file.
             
-            /*final String esnweightsfile = (
+            final String esnweightsfile = (
                 "data/esn-3-" + 
                 reservoirsize + "-3.weights"
             );
             final double[] weights = Serializer.read(esnweightsfile);
             //
             this.enemyesn.writeWeights(weights);
-            this.enemyesncopy.writeWeights(weights);*/
+            this.enemyesncopy.writeWeights(weights);
             //
         } catch (Exception e) {
             throw new RuntimeException(e);
