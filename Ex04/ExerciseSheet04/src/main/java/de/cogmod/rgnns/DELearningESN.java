@@ -24,7 +24,7 @@ public class DELearningESN {
         double[][] sequence = loadSequence("combat_sequence_5000.txt");
 
         final int input = 3;
-        final int reservoirsize = 30;
+        final int reservoirsize = 20;
         final int output = 3;
 
         int washout = 100;
@@ -35,14 +35,13 @@ public class DELearningESN {
         int num_inputweights = final_esn.getInputWeights().length * final_esn.getInputWeights()[0].length;
         System.out.println(num_inputweights);
         //int num_reservoirweights = reservoirsize*(reservoirsize+1);
-
         //
         // First, we need an objective (fitness) function that
         // we want optimize (minimize). This can be done by implementing
         // the interface Objective.
         //
 
-        double OUTPUT_FEEDBACK_SCALE = 10e-12;
+        double OUTPUT_FEEDBACK_SCALE = 10e-10;
 
         final Objective f = new Objective() {
             //
