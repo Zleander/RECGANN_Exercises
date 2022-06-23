@@ -1,5 +1,7 @@
 package de.cogmod.rgnns;
 
+import java.util.Arrays;
+
 /**
  * @author Sebastian Otte
  */
@@ -98,6 +100,32 @@ public class EchoStateNetwork extends RecurrentNeuralNetwork {
         final int training,
         final int test
     ) {
+        double[][] train_seq = Arrays.copyOfRange(sequence, washout, washout+training);
+        double[][] test_seq = Arrays.copyOfRange(sequence, washout+training, washout+training+test);
+
+        for (int t=0; t<washout; t++) {
+            forwardPassOscillator();
+            teacherForcing(sequence[t]);
+        }
+        double[][] X = new double[training][reservoirweights.length+1];
+        for (int t=0; t<training; t++) {
+            forwardPassOscillator();
+            final double[][][] act = this.getAct();
+            for (int j = 0; j < reservoirweights.length; j++) { // X[t,:] = hidden activations
+                X[t][j] = act[1][j][0]; // 1 is the hidden layer, j is the neuron and t is the timestep
+            }
+            X[t][reservoirweights.length] = 1;
+            teacherForcing(sequence[washout+t]);
+        }
+        ReservoirTools.solveSVD(X, train_seq, this.getWeights()[1][2]);
+
+        double[][] X_test = new double[test][this.getLastInputLength()];
+        for (int t=0; t<test; t++) {
+            X_test[t] = forwardPassOscillator();
+        }
+
+        return RMSE(X_test, test_seq);
+        /* 
         int reservoirsize = reservoirweights.length;
         int outputsize = this.getAct()[this.getOutputLayer()].length;
         
@@ -111,9 +139,7 @@ public class EchoStateNetwork extends RecurrentNeuralNetwork {
         // First we need to calculate the matrix X by repeatedly executing forward passes through the ESN.
         // Execute washout and training phase using teacher forcing:
         double[][] X = new double[training][reservoirsize+1];
-        forwardPass(sequence[0]);
-        for (int t = 1; t < washout+training; t++){
-            teacherForcing(sequence[t]);
+        for (int t = 0; t < washout+training; t++){
             forwardPassOscillator();
             if (t >= washout) {
                 final double[][][] act = this.getAct();
@@ -122,6 +148,7 @@ public class EchoStateNetwork extends RecurrentNeuralNetwork {
                 }
                 X[t-washout][reservoirsize] = 1;
             }
+            teacherForcing(sequence[t]);
         }
 
         // extract X as the activations from the training phase
@@ -132,7 +159,7 @@ public class EchoStateNetwork extends RecurrentNeuralNetwork {
                 X[t][j] = act[1][j][t]; // 1 is the hidden layer, j is the neuron and t is the timestep
             }
         }*/
-
+        /*
         // construct Z = sequence[washout+1:training+washout+1,:]
         double[][] Z = new double[training][outputsize];
         for (int t = washout+1; t < washout+training+1; t++){
@@ -142,7 +169,7 @@ public class EchoStateNetwork extends RecurrentNeuralNetwork {
         }
 
         // solve the linear equation system and store weights
-        ReservoirTools.solveSVD(X, Z, this.outputweights);
+        ReservoirTools.solveSVD(X, Z, this.getWeights()[1][2]);
         //ReservoirTools.solveSVD(ReservoirTools.multiply(ReservoirTools.transpose(X), X), ReservoirTools.multiply(ReservoirTools.transpose(X), Z), this.outputweights);
 
         // Now evaluate the network in the test phase.
@@ -158,6 +185,7 @@ public class EchoStateNetwork extends RecurrentNeuralNetwork {
         double error = RMSE(predictions, test_targets);
         
         return error; // error.
+    */
     }
     
 }

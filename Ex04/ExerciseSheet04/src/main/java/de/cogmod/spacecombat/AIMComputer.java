@@ -186,7 +186,7 @@ public class AIMComputer implements SpaceSimulationObserver {
             //
             // load esn.
             //
-            final int reservoirsize = 10; // use reasonable value here.
+            final int reservoirsize = 30; // use reasonable value here.
             this.enemyesn     = new EchoStateNetwork(3, reservoirsize, 3);
             this.enemyesncopy = new EchoStateNetwork(3, reservoirsize, 3);
             

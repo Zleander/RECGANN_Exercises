@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch DELearningESN",
+            "request": "launch",
+            "mainClass": "de.cogmod.rgnns.DELearningESN",
+            "projectName": "ExerciseSheet04_ae665562"
+        },
+        {
+            "type": "java",
+            "name": "Launch SpaceSimulationMain",
+            "request": "launch",
+            "mainClass": "de.cogmod.spacecombat.SpaceSimulationMain",
+            "projectName": "ExerciseSheet04_ae665562"
+        },
+        {
+            "type": "java",
             "name": "Debug (Launch) - Current File",
             "request": "launch",
             "mainClass": "${file}"

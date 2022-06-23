@@ -48,6 +48,9 @@ public class DELearningESN {
         // we want optimize (minimize). This can be done by implementing
         // the interface Objective.
         //
+
+        double OUTPUT_FEEDBACK_SCALE = 10e-12;
+
         final Objective f = new Objective() {
             //
             @Override
@@ -67,8 +70,8 @@ public class DELearningESN {
 
                 EchoStateNetwork esn = new EchoStateNetwork(input, reservoirsize, output);
                 double[] weights = new double[esn.getWeightsNum()];
-                for (int i=0; i < arity(); i++){
-                    weights[i] = values[offset+i];
+                for (int i=0; i < this.arity(); i++){
+                    weights[i] = values[offset+i] * OUTPUT_FEEDBACK_SCALE;
                 }
                 esn.writeWeights(weights);
                 double error = esn.trainESN(sequence, washout, training, test);
@@ -105,7 +108,7 @@ public class DELearningESN {
         //
         // go!
         //
-        optimizer.iterate(1000, 0.0);
+        optimizer.iterate(10000, 0.0);
         //
         // read the best solution.
         //
