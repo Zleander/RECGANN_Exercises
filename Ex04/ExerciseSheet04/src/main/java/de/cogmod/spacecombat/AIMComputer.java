@@ -8,6 +8,8 @@ import java.util.Random;
 
 import javax.xml.crypto.dsig.spec.ExcC14NParameterSpec;
 
+import org.ejml.dense.block.VectorOps_DDRB;
+
 import de.cogmod.rgnns.EchoStateNetwork;
 import de.cogmod.rgnns.RecurrentNeuralNetwork;
 import de.cogmod.rgnns.math.Vector3d;
@@ -83,7 +85,8 @@ public class AIMComputer implements SpaceSimulationObserver {
         result[0] = new Vector3d(result_arr[0], result_arr[1], result_arr[2]);
         for (int t=1; t<timesteps; t++) {
             result_arr = this.enemyesn.forwardPassOscillator();
-            result[t] = new Vector3d(result_arr[0], result_arr[1], result_arr[2]);
+            Vector3d relative_direction = new Vector3d(result_arr[0], result_arr[1], result_arr[2]);
+            result[t] = Vector3d.add(relative_direction, enemy.getOrigin());
         }
     	return result;
     }

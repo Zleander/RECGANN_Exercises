@@ -100,8 +100,10 @@ public class EchoStateNetwork extends RecurrentNeuralNetwork {
     ) {
         int reservoirsize = reservoirweights.length;
         int outputsize = this.getAct()[this.getOutputLayer()].length;
-
+        
+        // argmin_W ||XW - Z ||^2
         // we only have to set the output weights, using least squates optimization, so W_out = pseudoinv(X) @ Z,
+        // this is the solution to (X^T @ X) @ W = X^T @ Z
         // where X is the matrix of hidden activations of size (training, reservoirsize+1),
         // and Z is the matrix of size (training, outputsize) that contains the targets (in our case, the sequence values at the next timestep).
         // W_out has size (reservoirsize+1, outputsize). (+1 because of biases)
