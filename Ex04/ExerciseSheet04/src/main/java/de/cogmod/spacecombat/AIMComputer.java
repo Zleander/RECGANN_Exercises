@@ -1,14 +1,9 @@
 package de.cogmod.spacecombat;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
-
-import javax.xml.crypto.dsig.spec.ExcC14NParameterSpec;
-
-import org.ejml.dense.block.VectorOps_DDRB;
 
 import de.cogmod.rgnns.EchoStateNetwork;
 import de.cogmod.rgnns.RecurrentNeuralNetwork;
@@ -77,17 +72,14 @@ public class AIMComputer implements SpaceSimulationObserver {
     }
     
     private Vector3d[] generateESNFutureProjection(final int timesteps){
-    	Vector3d last           = this.enemy.getRelativePosition();
         final Vector3d[] result = new Vector3d[timesteps];
-        
-        double[] last_arr = new double[]{last.x, last.y, last.z};
-        double[] result_arr = this.enemyesn.forwardPass(last_arr);
-        result[0] = new Vector3d(result_arr[0], result_arr[1], result_arr[2]);
-        for (int t=1; t<timesteps; t++) {
-            result_arr = this.enemyesn.forwardPassOscillator();
-            Vector3d relative_direction = new Vector3d(result_arr[0], result_arr[1], result_arr[2]);
-            result[t] = Vector3d.add(relative_direction, enemy.getOrigin());
+
+        for (int t=0; t<timesteps; t++) {
+            double[] result_arr = this.enemyesncopy.forwardPassOscillator();
+            Vector3d relative_position = new Vector3d(result_arr[0], result_arr[1], result_arr[2]);
+            result[t] = Vector3d.add(relative_position, enemy.getOrigin());
         }
+        enemyesncopy.reset();
     	return result;
     }
     
@@ -151,9 +143,20 @@ public class AIMComputer implements SpaceSimulationObserver {
                     System.out.println("Recording complete");
                 }
             }
-            
+            //
             // Update trained ESN with current observation (teacher forcing)
+            //
+            enemyesn.forwardPassOscillator();
             this.enemyesn.teacherForcing(update);
+            // now we need to copy the activations to enemyesncopy because they get changed when generating the predictions
+            double[][][] original_act = enemyesn.getAct();
+            for (int i = 0; i < original_act.length; i++) {
+                for (int j = 0; j < original_act[0].length; j++) {
+                    for (int k = 0; k < original_act[0][0].length; k++) {
+                        enemyesncopy.getAct()[i][j][k] = original_act[i][j][k];
+                    }
+                }
+            }
 
             //
             // use copy of the RNN to generate future projection (replace dummy method).

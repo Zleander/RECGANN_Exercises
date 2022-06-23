@@ -1,28 +1,20 @@
 package de.cogmod.rgnns;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import javax.xml.crypto.dsig.spec.ExcC14NParameterSpec;
 
 import de.jannlab.io.Serializer;
 import de.jannlab.optimization.BasicOptimizationListener;
 import de.jannlab.optimization.Objective;
 import de.jannlab.optimization.optimizer.DifferentialEvolution;
 import de.jannlab.optimization.optimizer.DifferentialEvolution.Mutation;
-import static de.cogmod.rgnns.ReservoirTools.*;
 
 
 public class DELearningESN {
@@ -32,15 +24,16 @@ public class DELearningESN {
         double[][] sequence = loadSequence("combat_sequence_5000.txt");
 
         final int input = 3;
-        final int reservoirsize = 10;
+        final int reservoirsize = 30;
         final int output = 3;
 
-        int washout = 500;
-        int training = 4000;
-        int test = 500;
+        int washout = 100;
+        int training = 200;
+        int test = 200;
 
         EchoStateNetwork final_esn = new EchoStateNetwork(input, reservoirsize, output);
-        //int num_inputweights = input*reservoirsize;
+        int num_inputweights = final_esn.getInputWeights().length * final_esn.getInputWeights()[0].length;
+        System.out.println(num_inputweights);
         //int num_reservoirweights = reservoirsize*(reservoirsize+1);
 
         //
@@ -66,12 +59,12 @@ public class DELearningESN {
                 //
                 // the parameters for which the optimizer requests a fitness
                 // value or stored in values starting at the given offset
-                // with the length that is given via arity(), namely, sizex.
+                // with the length that is given via arity().
 
                 EchoStateNetwork esn = new EchoStateNetwork(input, reservoirsize, output);
                 double[] weights = new double[esn.getWeightsNum()];
                 for (int i=0; i < this.arity(); i++){
-                    weights[i] = values[offset+i] * OUTPUT_FEEDBACK_SCALE;
+                    weights[i] = values[offset+i] * (i < num_inputweights ? OUTPUT_FEEDBACK_SCALE : 1);
                 }
                 esn.writeWeights(weights);
                 double error = esn.trainESN(sequence, washout, training, test);
@@ -108,12 +101,21 @@ public class DELearningESN {
         //
         // go!
         //
-        optimizer.iterate(10000, 0.0);
+        optimizer.iterate(1000, 0.0);
         //
         // read the best solution.
         //
         final double[] solution = new double[f.arity()];
         optimizer.readBestSolution(solution, 0);
+        for (int i=0; i < f.arity(); i++){
+            solution[i] = solution[i] * (i < num_inputweights ? OUTPUT_FEEDBACK_SCALE : 1);
+        }
+        // we need to train once again to calculate the output weights (these are not saved in the solution)
+        final_esn.writeWeights(solution);
+        double error = final_esn.trainESN(sequence, washout, training, test); 
+        final_esn.readWeights(solution);
+        System.out.println("Final error: "+ error);
+        
     	
         String fname = "data/esn-3-" + reservoirsize + "-3.weights";
         Serializer.write(solution, fname);

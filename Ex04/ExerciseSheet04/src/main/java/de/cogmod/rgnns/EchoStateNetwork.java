@@ -84,7 +84,7 @@ public class EchoStateNetwork extends RecurrentNeuralNetwork {
         //
         final int n = act[outputlayer].length;
         //
-        final int t = this.getLastInputLength() > 0 ? (this.getLastInputLength() - 1): this.getLastInputLength(); // dirty fix for Index out of bounds error
+        final int t = this.getLastInputLength() - 1;
         //
         for (int i = 0; i < n; i++) {
             act[outputlayer][i][t] = target[i];
@@ -100,6 +100,7 @@ public class EchoStateNetwork extends RecurrentNeuralNetwork {
         final int training,
         final int test
     ) {
+        //split the sequence into parts for training and testing
         double[][] train_seq = Arrays.copyOfRange(sequence, washout, washout+training);
         double[][] test_seq = Arrays.copyOfRange(sequence, washout+training, washout+training+test);
 
@@ -107,6 +108,7 @@ public class EchoStateNetwork extends RecurrentNeuralNetwork {
             forwardPassOscillator();
             teacherForcing(sequence[t]);
         }
+        // extract the hidden activations X
         double[][] X = new double[training][reservoirweights.length+1];
         for (int t=0; t<training; t++) {
             forwardPassOscillator();
@@ -117,6 +119,7 @@ public class EchoStateNetwork extends RecurrentNeuralNetwork {
             X[t][reservoirweights.length] = 1;
             teacherForcing(sequence[washout+t]);
         }
+        //solve the least squares problem
         ReservoirTools.solveSVD(X, train_seq, this.getWeights()[1][2]);
 
         double[][] X_test = new double[test][this.getLastInputLength()];
@@ -125,67 +128,6 @@ public class EchoStateNetwork extends RecurrentNeuralNetwork {
         }
 
         return RMSE(X_test, test_seq);
-        /* 
-        int reservoirsize = reservoirweights.length;
-        int outputsize = this.getAct()[this.getOutputLayer()].length;
-        
-        // argmin_W ||XW - Z ||^2
-        // we only have to set the output weights, using least squates optimization, so W_out = pseudoinv(X) @ Z,
-        // this is the solution to (X^T @ X) @ W = X^T @ Z
-        // where X is the matrix of hidden activations of size (training, reservoirsize+1),
-        // and Z is the matrix of size (training, outputsize) that contains the targets (in our case, the sequence values at the next timestep).
-        // W_out has size (reservoirsize+1, outputsize). (+1 because of biases)
-
-        // First we need to calculate the matrix X by repeatedly executing forward passes through the ESN.
-        // Execute washout and training phase using teacher forcing:
-        double[][] X = new double[training][reservoirsize+1];
-        for (int t = 0; t < washout+training; t++){
-            forwardPassOscillator();
-            if (t >= washout) {
-                final double[][][] act = this.getAct();
-                for (int j = 0; j < reservoirsize; j++) { // X[t,:] = hidden activations
-                    X[t-washout][j] = act[1][j][0]; // 1 is the hidden layer, j is the neuron and t is the timestep
-                }
-                X[t-washout][reservoirsize] = 1;
-            }
-            teacherForcing(sequence[t]);
-        }
-
-        // extract X as the activations from the training phase
-        
-        /*for (int t = washout; t < washout+training; t++){
-            for (int j = 0; j < reservoirsize; j++) { // X[t,:] = hidden activations
-                final double[][][] act = this.getAct();
-                X[t][j] = act[1][j][t]; // 1 is the hidden layer, j is the neuron and t is the timestep
-            }
-        }*/
-        /*
-        // construct Z = sequence[washout+1:training+washout+1,:]
-        double[][] Z = new double[training][outputsize];
-        for (int t = washout+1; t < washout+training+1; t++){
-            for (int j = 0; j < outputsize; j++) {
-                Z[t-washout-1][j] = sequence[t][j];
-            }
-        }
-
-        // solve the linear equation system and store weights
-        ReservoirTools.solveSVD(X, Z, this.getWeights()[1][2]);
-        //ReservoirTools.solveSVD(ReservoirTools.multiply(ReservoirTools.transpose(X), X), ReservoirTools.multiply(ReservoirTools.transpose(X), Z), this.outputweights);
-
-        // Now evaluate the network in the test phase.
-        double[][] predictions = new double[test][outputsize];
-        double[][] test_targets = new double[test][outputsize];
-        for (int t = 0; t < test; t++) {
-            double[] output = forwardPassOscillator();
-            for (int i = 0; i < outputsize; i++) {
-                predictions[t][i] = output[i];//this.getAct()[this.getOutputLayer()][i][0]; // oh we could probably use the return value from the function above
-                test_targets[t][i] = sequence[t+washout+training][i];
-            }
-        }
-        double error = RMSE(predictions, test_targets);
-        
-        return error; // error.
-    */
     }
     
 }
