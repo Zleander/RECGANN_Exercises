@@ -18,6 +18,7 @@ sys.path.append("../../utils")
 from modules import Model
 from configuration import Configuration
 import helper_functions as helpers
+from tqdm import tqdm
 
 _author_ = "Matthias Karlbauer"
 
@@ -44,7 +45,8 @@ def run_training():
     model = Model(
         d_one_hot=cfg.model.d_one_hot,
         d_lstm=cfg.model.d_lstm,
-        num_lstm_layers=cfg.model.num_lstm_layers
+        num_lstm_layers=cfg.model.num_lstm_layers,
+        dropout=0
     ).to(device=device)
 
     # Count number of trainable parameters
@@ -86,7 +88,8 @@ def run_training():
         sequence_errors = []
 
         # Iterate over the training batches
-        for batch_idx, (net_input, net_label) in enumerate(dataloader):
+        for batch_idx, (net_input, net_label) in tqdm(enumerate(dataloader)):
+            #print(batch_idx, len(dataloader))
 
             # Move data to the desired device and convert from
             # [batch_size, time, dim] to [time, batch_size, dim]
@@ -96,9 +99,13 @@ def run_training():
             # Reset optimizer to clear the previous batch
             optimizer.zero_grad()
 
-            # TODO: Generate a model prediction 
-            loss = criterion(y_hat, target)
+            # DONE: Generate a model prediction
 
+            y_hat = model(net_input)
+            target = net_label
+            #print(y_hat[0].shape)
+            #print(target.shape)
+            loss = criterion(y_hat[0].squeeze(), target.squeeze())
             # Compute gradients
             loss.backward()
 
@@ -106,7 +113,7 @@ def run_training():
             optimizer.step()
 
             sequence_errors.append(loss.item())
-
+        print(f'Final error of epoch {np.mean(sequence_errors)}')
         epoch_errors.append(np.mean(sequence_errors))
 
         # Save the model to file (if desired)
@@ -116,7 +123,7 @@ def run_training():
                 model_src_path=os.path.abspath(""),
                 cfg=cfg,
                 epoch=epoch,
-                epoch_errors=epoch_errors,
+                epoch_errors_train=epoch_errors,
                 model=model))
             thread.start()
 

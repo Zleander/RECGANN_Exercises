@@ -73,7 +73,7 @@ def txt_to_npy(path):
 			onehot_list = list()
 			for char in line:
 				onehot_list.append(helpers.char_to_one_hot(char, alphabet))
-			onehot_line = np.concatenate(onehot_list)
+			onehot_line = np.stack(onehot_list)
 			np.save(os.path.join(DATASET_NAME, f"sample_{data_idx:04d}.npy"), onehot_line)
 
 			data_idx += 1
