@@ -95,9 +95,7 @@ def one_hot_to_char(one_hot_vector, alphabet):
     :return: The character which the one_hot_vector represents
     """
     
-    # TODO: Generate the charactor from the one-hot vector here
-
-    return char
+    return alphabet[np.where(one_hot_vector==1)].item()
 
 
 def char_to_one_hot(char, alphabet):
@@ -107,9 +105,9 @@ def char_to_one_hot(char, alphabet):
     :param alphabet: The alphabet
     :return: The one-hot vector for the given character
     """
-
-    # TODO: Generate the one-hot vector here
-
+    one_hot_vector = np.zeros(len(alphabet), dtype=int)
+    index = np.where(alphabet == char.lower())
+    one_hot_vector[index] = 1
     return one_hot_vector
 
 

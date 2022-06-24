@@ -31,7 +31,7 @@ def txt_to_npy(path):
 	"""
 
 	# Load the .txt file
-	with open(path, "r") as file:
+	with open(path, "r", encoding='utf-8') as file:
 
 		#
 		# Determine the alphabet of the text
@@ -65,10 +65,16 @@ def txt_to_npy(path):
 			if len(line) <= 1:
 				continue
 
-			# TODO: Convert the line into a sequence of one hot vectors and
+			# DONE: Convert the line into a sequence of one hot vectors and
 			#		write it to file as sample_****.npy, using np.save as
 			#		above. You may implement and use a char_to_one_hot method
 			#		in the helper_functions.py (utils directory).
+
+			onehot_list = list()
+			for char in line:
+				onehot_list.append(helpers.char_to_one_hot(char, alphabet))
+			onehot_line = np.concatenate(onehot_list)
+			np.save(os.path.join(DATASET_NAME, f"sample_{data_idx:04d}.npy"), onehot_line)
 
 			data_idx += 1
 
