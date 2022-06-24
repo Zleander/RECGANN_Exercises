@@ -1,5 +1,5 @@
-#!/usr/bin/env python3
-
+import os
+os.environ['KMP_DUPLICATE_LIB_OK']='True'
 import numpy as np
 import torch as th
 import os

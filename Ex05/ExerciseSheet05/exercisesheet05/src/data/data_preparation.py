@@ -4,7 +4,7 @@ import numpy as np
 import os
 import sys
 
-sys.path.append("../utils")
+sys.path.append('../utils')
 import helper_functions as helpers
 
 
