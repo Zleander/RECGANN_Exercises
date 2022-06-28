@@ -1,12 +1,12 @@
 {
 	"general": {
-		"device": "CPU"
+		"device": "cuda"
 	},
 
 	"training": {
 		"save_model": true,
 		"epochs": 10,
-		"learning_rate": 0.0001
+		"learning_rate": 0.0005
 	},
 
 	"testing": {
@@ -15,11 +15,11 @@
 	},
 
 	"dataset": {
-		"name": "chapter1"
+		"name": "/content/drive/MyDrive/RecNN/exercisesheet05/src/data/chapter1"
 	},
 
 	"model": {
-		"name": "example_model_name",
+		"name": "lstm_lr0005",
 		"d_one_hot": 45,
 		"d_lstm": 128,
 		"num_lstm_layers": 2

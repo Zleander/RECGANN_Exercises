@@ -75,6 +75,10 @@ def save_model_to_file(model_src_path, cfg, epoch, epoch_errors_train,
     # Save model weights to file
     th.save(model.state_dict(), 
             os.path.join(model_save_path, cfg.model.name + ".pt"))
+    
+    if epoch % 50 == 0:
+        th.save(model.state_dict(), 
+                os.path.join(model_save_path, cfg.model.name + f"_epoch{epoch}_error{epoch_errors_train[-1]:.5f}.pt"))
 
     # Copy the configurations and add a results entry
     cfg["results"] = {

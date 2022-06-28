@@ -1,6 +1,6 @@
 {
  "general": {
-  "device": "CPU"
+  "device": "CUDA"
  },
  "training": {
   "save_model": true,

@@ -18,7 +18,6 @@ sys.path.append("../../utils")
 from modules import Model
 from configuration import Configuration
 import helper_functions as helpers
-from tqdm import tqdm
 
 _author_ = "Matthias Karlbauer"
 
@@ -88,7 +87,7 @@ def run_training():
         sequence_errors = []
 
         # Iterate over the training batches
-        for batch_idx, (net_input, net_label) in tqdm(enumerate(dataloader)):
+        for batch_idx, (net_input, net_label) in enumerate(dataloader):
             #print(batch_idx, len(dataloader))
 
             # Move data to the desired device and convert from
@@ -117,7 +116,7 @@ def run_training():
         epoch_errors.append(np.mean(sequence_errors))
 
         # Save the model to file (if desired)
-        if cfg.training.save_model and np.mean(sequence_errors) < best_error:
+        if cfg.training.save_model and np.mean(sequence_errors) < best_error or epoch % 50 == 0:
             # Start a separate thread to save the model
             thread = Thread(target=helpers.save_model_to_file(
                 model_src_path=os.path.abspath(""),
