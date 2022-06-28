@@ -2,206 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b37d7ab2-95d3-4077-b25f-cefacb6a365a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0000.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0000.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0001.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0001.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0002.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0002.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0003.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0003.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0004.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0004.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0005.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0005.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0006.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0006.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0007.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0007.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0008.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0008.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0009.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0009.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0010.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0010.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0011.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0011.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0012.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0012.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0013.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0013.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0014.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0014.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0015.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0015.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0016.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0016.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0017.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0017.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0018.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0018.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0019.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0019.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0020.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0020.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0021.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0021.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0022.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0022.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0023.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0023.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0024.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0024.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0025.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0025.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0026.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0026.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0027.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0027.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0028.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0028.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0029.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0029.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0030.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0030.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0031.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0031.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0032.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0032.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0033.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0033.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0034.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0034.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0035.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0035.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0036.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0036.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0037.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0037.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0038.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0038.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0039.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0039.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0040.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0040.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0041.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0041.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0042.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0042.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0043.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0043.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0044.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0044.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0045.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0045.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0046.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0046.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0047.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0047.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0048.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0048.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0049.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0049.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0050.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0050.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0051.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0051.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0052.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0052.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0053.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0053.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0054.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0054.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0055.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0055.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0056.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0056.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0057.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0057.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0058.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0058.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0059.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0059.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0060.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0060.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0061.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0061.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0062.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0062.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0063.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0063.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0064.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0064.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0065.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0065.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0066.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0066.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0067.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0067.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0068.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0068.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0069.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0069.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0070.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0070.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0071.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0071.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0072.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0072.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0073.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0073.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0074.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0074.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0075.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0075.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0076.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0076.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0077.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0077.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0078.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0078.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0079.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0079.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0080.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0080.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0081.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0081.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0082.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0082.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0083.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0083.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0084.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0084.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0085.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0085.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0086.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0086.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0087.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0087.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0088.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0088.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0089.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0089.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0090.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0090.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0091.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0091.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0092.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0092.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0093.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0093.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0094.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0094.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0095.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0095.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0096.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0096.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0097.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0097.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0098.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0098.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0099.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0099.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0100.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0100.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0101.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0101.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0102.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0102.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0103.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0103.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0104.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0104.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0105.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0105.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0106.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0106.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0107.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0107.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0108.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0108.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0109.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0109.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0110.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0110.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0111.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0111.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0112.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0112.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0113.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0113.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0114.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0114.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0115.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0115.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0116.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0116.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0117.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0117.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0118.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0118.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0119.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0119.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0120.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0120.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0121.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0121.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0122.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0122.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0123.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0123.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0124.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0124.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0125.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0125.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0126.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0126.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0127.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0127.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0128.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0128.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0129.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0129.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0130.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0130.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0131.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0131.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0132.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0132.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0133.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0133.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0134.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0134.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0135.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0135.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0136.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0136.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0137.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0137.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0138.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0138.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0139.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0139.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0140.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0140.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0141.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0141.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0142.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0142.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0143.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0143.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0144.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0144.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0145.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0145.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0146.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0146.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0147.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0147.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0148.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0148.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0149.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0149.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0150.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0150.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0151.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0151.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0152.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0152.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0153.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0153.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0154.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0154.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0155.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0155.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0156.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0156.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0157.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0157.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0158.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0158.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0159.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0159.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0160.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0160.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0161.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0161.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0162.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0162.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0163.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0163.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0164.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0164.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0165.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0165.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0166.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0166.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0167.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0167.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0168.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0168.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0169.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0169.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0170.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0170.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0171.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0171.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0172.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0172.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0173.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0173.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0174.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0174.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0175.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0175.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0176.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0176.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0177.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0177.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0178.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0178.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0179.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0179.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0180.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0180.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0181.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0181.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0182.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0182.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0183.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0183.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0184.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0184.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0185.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0185.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0186.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0186.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0187.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0187.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0188.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0188.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0189.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0189.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0190.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0190.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0191.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0191.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0192.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0192.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0193.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0193.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0194.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0194.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/chapter1/sample_0195.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/chapter1/sample_0195.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/data_preparation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/data_preparation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/lstm/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/lstm/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/lstm/modules.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/lstm/modules.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/lstm/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/lstm/train.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/lstm/checkpoints/example_model_name/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/lstm/checkpoints/example_model_name/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/lstm/checkpoints/example_model_name/example_model_name.pt" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/lstm/checkpoints/example_model_name/example_model_name.pt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/transformer/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/transformer/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/transformer/modules.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/transformer/modules.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/transformer/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/transformer/train.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -210,21 +17,21 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/data/data_preparation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="844">
+            <state relative-caret-position="1440">
               <caret line="74" column="28" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/lstm/modules.py">
+        <entry file="file://$PROJECT_DIR$/src/models/transformer/modules.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="44" column="32" selection-start-line="44" selection-start-column="32" selection-end-line="44" selection-end-column="32" />
+            <state relative-caret-position="80">
+              <caret line="187" column="60" selection-start-line="187" selection-start-column="60" selection-end-line="187" selection-end-column="60" />
               <folding>
                 <element signature="e#24#42#0" expanded="true" />
               </folding>
@@ -233,10 +40,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/models/transformer/config.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="268">
+              <caret line="17" column="16" lean-forward="true" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/models/transformer/train.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="471">
+              <caret line="121" selection-start-line="121" selection-end-line="121" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/lstm/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="106" column="13" selection-start-line="106" selection-start-column="13" selection-end-line="106" selection-end-column="13" />
+            <state relative-caret-position="-346">
+              <caret line="49" column="23" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
               <folding>
                 <element signature="e#64#82#0" expanded="true" />
               </folding>
@@ -245,49 +70,25 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/lstm/test.py">
+        <entry file="file://$PROJECT_DIR$/src/utils/configuration.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2340" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/lstm/config.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../../../../../Statistical ML/Assignments/sml_env/Lib/encodings/cp1252.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/helper_functions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="56" column="69" selection-start-line="56" selection-start-column="51" selection-end-line="56" selection-end-column="69" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/datasets.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+            <state relative-caret-position="320">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -298,6 +99,8 @@
       <find>tqdm</find>
       <find>criterion</find>
       <find>nn</find>
+      <find>forward</find>
+      <find>mask</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -311,24 +114,18 @@
         <option value="$PROJECT_DIR$/src/models/lstm/modules.py" />
         <option value="$PROJECT_DIR$/src/models/lstm/train.py" />
         <option value="$PROJECT_DIR$/src/models/lstm/config.json" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/exercisesheet05.iml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/src/test_cude.py" />
+        <option value="$PROJECT_DIR$/src/models/transformer/train.py" />
+        <option value="$PROJECT_DIR$/src/models/transformer/modules.py" />
+        <option value="$PROJECT_DIR$/src/models/transformer/config.json" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1048" />
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="1940" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -336,7 +133,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -372,15 +168,24 @@
               <item name="exercisesheet05" type="b2602c69:ProjectViewProjectNode" />
               <item name="exercisesheet05" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="transformer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="exercisesheet05" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exercisesheet05" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -418,6 +223,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test_cude" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="exercisesheet05" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/test_cude.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="train" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="exercisesheet05" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -430,7 +256,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/models/lstm/train.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/models/transformer/train.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -439,9 +265,15 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.data_preparation" />
+      <item itemvalue="Python.test_cude" />
+      <item itemvalue="Python.train" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.train" />
+        <item itemvalue="Python.test_cude" />
         <item itemvalue="Python.data_preparation" />
       </list>
     </recent_temporary>
@@ -461,21 +293,22 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24966975" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.078599736" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" weight="0.2602546" />
-      <window_info anchor="bottom" id="Terminal" weight="0.8727016" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3493635" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32673267" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39886847" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.8727016" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.2602546" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -493,23 +326,9 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/utils/datasets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../../../Statistical ML/Assignments/sml_env/Lib/encodings/cp1252.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/lstm/modules.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
+        <state relative-caret-position="860">
           <caret line="44" column="32" selection-start-line="44" selection-start-column="32" selection-end-line="44" selection-end-column="32" />
           <folding>
             <element signature="e#24#42#0" expanded="true" />
@@ -517,39 +336,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/data_preparation.py">
+    <entry file="file://$PROJECT_DIR$/src/models/lstm/test.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../../../Statistical ML/Assignments/sml_env/Lib/encodings/cp1252.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="844">
-          <caret line="74" column="28" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
+        <state relative-caret-position="440">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/datasets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test_cude.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/lstm/checkpoints/example_model_name/example_model_name.pt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/lstm/checkpoints/example_model_name/config.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/helper_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="56" column="69" selection-start-line="56" selection-start-column="51" selection-end-line="56" selection-end-column="69" />
+        <state relative-caret-position="358">
+          <caret line="82" column="35" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/models/lstm/config.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+        <state relative-caret-position="440">
+          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/lstm/test.py">
+    <entry file="file://$PROJECT_DIR$/src/data/data_preparation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2340" />
+        <state relative-caret-position="1440">
+          <caret line="74" column="28" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/configuration.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/models/lstm/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="106" column="13" selection-start-line="106" selection-start-column="13" selection-end-line="106" selection-end-column="13" />
+        <state relative-caret-position="-346">
+          <caret line="49" column="23" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
           <folding>
             <element signature="e#64#82#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/transformer/modules.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="187" column="60" selection-start-line="187" selection-start-column="60" selection-end-line="187" selection-end-column="60" />
+          <folding>
+            <element signature="e#24#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/transformer/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="121" selection-start-line="121" selection-end-line="121" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/transformer/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="17" column="16" lean-forward="true" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
         </state>
       </provider>
     </entry>

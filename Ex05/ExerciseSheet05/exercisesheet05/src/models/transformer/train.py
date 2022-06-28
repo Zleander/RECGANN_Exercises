@@ -18,6 +18,7 @@ sys.path.append("../../utils")
 from modules import Model
 from configuration import Configuration
 import helper_functions as helpers
+from tqdm import tqdm
 
 _author_ = "Matthias Karlbauer"
 
@@ -25,7 +26,7 @@ _author_ = "Matthias Karlbauer"
 def run_training():
 
     # Load the user configurations
-    cfg = Configuration("config.json")
+    cfg = Configuration(r"D:\Uni Master\Semester 2\Recurrent and Generative NNs\Assignments\RECGANN_Exercises\Ex05\ExerciseSheet05\exercisesheet05\src\models\transformer\config.json")
 
     # Print some information to console
     print("Model name:", cfg.model.name)
@@ -38,7 +39,6 @@ def run_training():
 
     # Set device on GPU if specified in the configuration file, else CPU
     device = helpers.determine_device()
-    
     # Initialize and set up the model
     model = Model(
         n_heads=cfg.model.n_heads,
@@ -96,7 +96,7 @@ def run_training():
         sequence_errors = []
 
         # Iterate over the training batches
-        for batch_idx, (net_input, net_label) in enumerate(dataloader):
+        for batch_idx, (net_input, net_label) in tqdm(enumerate(dataloader)):
 
             # Move data to the desired device and convert from
             # [batch_size, time, dim] to [time, batch_size, dim]
@@ -107,11 +107,11 @@ def run_training():
             optimizer.zero_grad()
 
             # TODO: Generate prediction
+            y_hat = model(net_input.squeeze())
 
             # Convert target one hot to indices (required for CE-loss)
-            target = net_label[:, 0].data.topk(1)[1][:, 0]
-
-            loss = criterion(y_hat[:, 0], target)
+            # target = net_label[:, 0].data.topk(1)[1][:, 0]
+            loss = criterion(y_hat.squeeze(), net_label.squeeze())
             loss.backward()
             optimizer.step()
             sequence_errors.append(loss.item())

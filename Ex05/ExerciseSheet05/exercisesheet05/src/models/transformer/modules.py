@@ -22,7 +22,10 @@ class FeedForward(nn.Module):
 		"""
 		super().__init__()
 
-		# TODO: define the feed-forward and an according dropout layer here.
+		# DONE: define the feed-forward and an according dropout layer here.
+		self.layer1 = th.nn.Linear(d_model, linear_layer_size)
+		self.layer2 = th.nn.Linear(linear_layer_size, d_model)
+		self.dropout_layer = th.nn.Dropout(dropout)
 
 	def forward(self, x):
 		"""
@@ -31,9 +34,11 @@ class FeedForward(nn.Module):
 		:return: The module's output
 		"""
 		
-		# TODO: implement the forward pass for the feed-forward module here
-
-		return x
+		# DONE: implement the forward pass for the feed-forward module here
+		x = self.layer1(x)
+		x = th.nn.functional.relu(x)
+		x = self.layer2(x)
+		return self.dropout_layer(x)
 
 
 class MultiHeadSelfAttention(nn.Module):
@@ -46,11 +51,26 @@ class MultiHeadSelfAttention(nn.Module):
 		Constructor method of the attention module.
 		:param n_heads: The number of attention heads
 		:param d_model: The size of the K, V, Q and output vectors
-        	:param dropout: Probability of dropping out certain neurons
+        :param dropout: Probability of dropping out certain neurons
 		"""
 		super().__init__()
+		self.d_model = d_model
+		self.n_heads = n_heads
+		self.dropout = dropout
+		self.d_alphabet = d_model
 
-		# TODO: set up the layers for the multi-head-attention module here
+		# DONE: set up the layers for the multi-head-attention module here
+		# TODO: implement dropout
+		self.W_Q = th.nn.parameter.Parameter(th.ones((self.d_alphabet, n_heads, d_model)))  # .cuda() ?
+		self.W_K = th.nn.parameter.Parameter(th.ones((self.d_alphabet, n_heads, d_model)))
+		self.W_V = th.nn.parameter.Parameter(th.ones((self.d_alphabet, n_heads, d_model)))
+		self.W_O = th.nn.parameter.Parameter(th.ones((d_model*n_heads, self.d_alphabet)))
+		th.nn.init.xavier_uniform(self.W_Q)
+		th.nn.init.xavier_uniform(self.W_K)
+		th.nn.init.xavier_uniform(self.W_V)
+		th.nn.init.xavier_uniform(self.W_O)
+
+		self.dropout_layer = th.nn.Dropout(dropout)
 
 	def forward(self, x, mask=None):
 		"""
@@ -61,10 +81,18 @@ class MultiHeadSelfAttention(nn.Module):
 		:param mask: Mask to hide future entries
 		:return: The attention weighted output as linear combination of v
 		"""
+		# DONE: define the forward pass of the multi-head-attention here
+		q = th.einsum('ij, jlm -> ilm', x, self.W_Q) # x @ self.W_Q  # seq_len, n_heads, d_model
+		k = th.einsum('ij, jlm -> ilm', x, self.W_K)
+		v = th.einsum('ij, jlm -> ilm', x, self.W_V)
 
-		# TODO: define the forward pass of the multi-head-attention here
-
-		return x
+		results = []
+		for head in range(self.n_heads):
+			att, _ = self.attention(q[:,head,:], k[:,head,:], v[:,head,:], mask=mask)  # seq_len, d_model
+			results.append(att)
+		concatted = th.concat(results, dim=1)  # seq_len, d_model*n_heads
+		res = concatted @ self.W_O
+		return self.dropout_layer(res)
 
 	def attention(self, q, k, v, mask=None):
 		"""
@@ -76,11 +104,13 @@ class MultiHeadSelfAttention(nn.Module):
 		:param mask: Mask to hide future entries
 		:return: Weighted linear combination v_hat and the attention weights
 		"""
-
-		# TODO: compute the attention scores, apply the mask and perform the
+		# DONE: compute the attention scores, apply the mask and perform the
 		#		attention multiplication here. Remember the scaling factor!
 
-		return v
+		I = q @ k.T
+		I_masked = I / np.sqrt(self.d_model) + mask
+		softm = th.nn.functional.softmax(I_masked, dim=1)
+		return softm @ v, softm
 
 
 class DecoderLayer(nn.Module):
@@ -88,21 +118,23 @@ class DecoderLayer(nn.Module):
 	A decoder layer part (of a Transformer) which predicts next observations
 	based on the previous inputs.
 	"""
-	
+
 	def __init__(self, n_heads, d_model, linear_layer_size, dropout=0.1):
-		"""
-		Constructor method of the attention module.
+		""" Constructor method of the attention module.
 		:param n_heads: The number of attention heads
 		:param d_model: The size of the K, V, Q and output vectors
 		:param linear_layer_size: The internal size of the feed forward module
 		:param dropout: Probability of dropping out certain neurons
 		"""
-		super().__init__()
 
-		# TODO: define the layers multi-head-attention, feed-forward, dropout
-		#	and normalization layers here. 
-        #   Note that we do not use an Encoder
-		#	and therefore do not require the Encoder-Decoder Attention module!
+		# DONE: define the layers multi-head-attention, feed-forward, dropout
+		# and normalization layers here.
+		# Note that we do not use an Encoder
+		# and therefore do not require the Encoder-Decoder Attention module
+		super().__init__()
+		self.att_mod = MultiHeadSelfAttention(n_heads, d_model, dropout)
+		self.ff_mod = FeedForward(d_model, linear_layer_size, dropout)
+		# we do not use another droupout layer because we already have dropout at the end of the ff module
 
 	def forward(self, x, mask):
 		"""
@@ -112,9 +144,13 @@ class DecoderLayer(nn.Module):
 		:return: The module's output
 		"""
 		
-		# TODO: define the forward pass. Keep in mind to produce residuals
+		# DONE: define the forward pass. Keep in mind to produce residuals
 		#		instead of the absolute values directly.
+		x = x + self.att_mod(x, mask)
+		x = x + self.ff_mod(x)
+
 		return x
+
 
 class Model(nn.Module):
 	"""
@@ -134,8 +170,14 @@ class Model(nn.Module):
 		:param dropout: Probability of dropping out certain neurons
 		"""
 		super().__init__()
-
-		# TODO: define linear and decoder layers for the overall model
+		self.d_model = d_model
+		# DONE: define linear and decoder layers for the overall model
+		self.lin_in = th.nn.Linear(d_one_hot, d_model)
+		self.blocks = []
+		for _ in range(num_blocks):
+			self.blocks.append(DecoderLayer(n_heads, d_model, linear_layer_size, dropout))
+		self.lin_out = th.nn.Linear(d_model, d_one_hot)
+		self.softmax = th.nn.Softmax()
 
 	def forward(self, x):
 		"""
@@ -143,8 +185,12 @@ class Model(nn.Module):
 		:param x: The input to the module
 		:return: The module's output
 		"""
-		# TODO: implement the forward pass of the model here
-
+		# DONE: implement the forward pass of the model here
+		x = self.lin_in(x)
+		for block in self.blocks:
+			x = block(x, self._mask(x))
+		x = self.lin_out(x)
+		x = self.softmax(x)
 		return x
 		
 	def _mask(self, x):
@@ -154,6 +200,7 @@ class Model(nn.Module):
 		"""
 		device, seq_len = x.device, x.shape[0]    
 
-		# TODO: implement the mask for the decoder here
+		# DONE: implement the mask for the decoder here
+		mask = (-np.inf * th.ones(seq_len, seq_len)).triu(diagonal=1)  # maybe duplicate
 
 		return mask

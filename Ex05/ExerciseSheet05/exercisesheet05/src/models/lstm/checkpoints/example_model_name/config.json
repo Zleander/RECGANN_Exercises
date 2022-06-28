@@ -21,8 +21,8 @@
   "num_lstm_layers": 2
  },
  "results": {
-  "current_epoch": 6,
-  "current_training_error": 2.9287871365644493,
-  "lowest_train_error": 2.9287871365644493
+  "current_epoch": 3,
+  "current_training_error": 2.9772204610766195,
+  "lowest_train_error": 2.9772204610766195
  }
 }

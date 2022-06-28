@@ -6,7 +6,7 @@
 	"training": {
 		"save_model": true,
 		"epochs": 200,
-		"learning_rate": 1e-3,
+		"learning_rate": 5e-3,
 		"scheduler": true
 	},
 
@@ -20,11 +20,11 @@
 	},
 
 	"model": {
-		"name": "example_model_name",
+		"name": "transformer1_lr=5e-3",
 		"d_one_hot": 45,
 		"n_heads": 8,
 		"d_model": 128,
 		"linear_layer_size": 512,
-		"num_blocks": 4
+		"num_blocks": 1
 	}
 }
