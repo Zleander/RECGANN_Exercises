@@ -39,9 +39,13 @@ class Model(nn.Module):
 		"""
 
 		x = self.input_layer(x)
-		#h0 = th.zeros(self.lstm_layer.num_layers,1,self.lstm_layer.hidden_size)
-		#c0 = th.zeros(self.lstm_layer.num_layers,1,self.lstm_layer.hidden_size)
-		x, (h, c) = self.lstm_layer(x)
+		# h0 = th.zeros(self.lstm_layer.num_layers,1,self.lstm_layer.hidden_size)
+		# c0 = th.zeros(self.lstm_layer.num_layers,1,self.lstm_layer.hidden_size)
+		if state:
+			h0, c0 = state
+			x, (h, c) = self.lstm_layer(x, (h0.detach(), c0.detach()))
+		else:
+			x, (h, c) = self.lstm_layer(x)
 		x = self.output_layer(x)
 
 		# DONE: Implement the forward pass and return the model's output as

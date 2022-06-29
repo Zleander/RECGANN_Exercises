@@ -173,7 +173,7 @@ class Model(nn.Module):
 		self.d_model = d_model
 		# DONE: define linear and decoder layers for the overall model
 		self.lin_in = th.nn.Linear(d_one_hot, d_model)
-		self.blocks = []
+		self.blocks = nn.ModuleList()
 		for _ in range(num_blocks):
 			self.blocks.append(DecoderLayer(n_heads, d_model, linear_layer_size, dropout))
 		self.lin_out = th.nn.Linear(d_model, d_one_hot)
@@ -201,6 +201,6 @@ class Model(nn.Module):
 		device, seq_len = x.device, x.shape[0]    
 
 		# DONE: implement the mask for the decoder here
-		mask = (-np.inf * th.ones(seq_len, seq_len)).triu(diagonal=1)  # maybe duplicate
+		mask = (-np.inf * th.ones(seq_len, seq_len)).triu(diagonal=1).to(device)  # maybe duplicate
 
 		return mask

@@ -25,6 +25,6 @@
 		"n_heads": 8,
 		"d_model": 128,
 		"linear_layer_size": 512,
-		"num_blocks": 1
+		"num_blocks": 4
 	}
 }
