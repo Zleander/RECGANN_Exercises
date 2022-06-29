@@ -1,0 +1,28 @@
+{
+ "general": {
+  "device": "CUDA"
+ },
+ "training": {
+  "save_model": true,
+  "epochs": 1000,
+  "learning_rate": 0.0005
+ },
+ "testing": {
+  "teacher_forcing_steps": 30,
+  "closed_loop_steps": 100
+ },
+ "dataset": {
+  "name": "/content/drive/MyDrive/RecNN/exercisesheet05/src/data/chapter1"
+ },
+ "model": {
+  "name": "lstm_lr0005",
+  "d_one_hot": 45,
+  "d_lstm": 128,
+  "num_lstm_layers": 2
+ },
+ "results": {
+  "current_epoch": 995,
+  "current_training_error": 0.029377146921006545,
+  "lowest_train_error": 0.029377146921006545
+ }
+}
