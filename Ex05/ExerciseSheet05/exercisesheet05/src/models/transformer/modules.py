@@ -37,8 +37,9 @@ class FeedForward(nn.Module):
 		# DONE: implement the forward pass for the feed-forward module here
 		x = self.layer1(x)
 		x = th.nn.functional.relu(x)
+		x = self.dropout_layer(x)
 		x = self.layer2(x)
-		return self.dropout_layer(x)
+		return x
 
 
 class MultiHeadSelfAttention(nn.Module):
@@ -57,18 +58,17 @@ class MultiHeadSelfAttention(nn.Module):
 		self.d_model = d_model
 		self.n_heads = n_heads
 		self.dropout = dropout
-		self.d_alphabet = d_model
 
 		# DONE: set up the layers for the multi-head-attention module here
-		# TODO: implement dropout
-		self.W_Q = th.nn.parameter.Parameter(th.ones((self.d_alphabet, n_heads, d_model)))  # .cuda() ?
-		self.W_K = th.nn.parameter.Parameter(th.ones((self.d_alphabet, n_heads, d_model)))
-		self.W_V = th.nn.parameter.Parameter(th.ones((self.d_alphabet, n_heads, d_model)))
-		self.W_O = th.nn.parameter.Parameter(th.ones((d_model*n_heads, self.d_alphabet)))
-		th.nn.init.xavier_uniform(self.W_Q)
-		th.nn.init.xavier_uniform(self.W_K)
-		th.nn.init.xavier_uniform(self.W_V)
-		th.nn.init.xavier_uniform(self.W_O)
+		# DONE: implement dropout
+		self.W_Q = th.nn.parameter.Parameter(th.ones((d_model+1, n_heads, int(self.d_model / n_heads))))  # .cuda() ?
+		self.W_K = th.nn.parameter.Parameter(th.ones((d_model+1, n_heads, int(self.d_model / n_heads))))
+		self.W_V = th.nn.parameter.Parameter(th.ones((d_model+1, n_heads, int(self.d_model / n_heads))))
+		self.W_O = th.nn.parameter.Parameter(th.ones((d_model+1, d_model)))  # +1 to model biases
+		#th.nn.init.xavier_uniform(self.W_Q)
+		#th.nn.init.xavier_uniform(self.W_K)
+		#th.nn.init.xavier_uniform(self.W_V)
+		#th.nn.init.xavier_uniform(self.W_O)
 
 		self.dropout_layer = th.nn.Dropout(dropout)
 
@@ -82,15 +82,17 @@ class MultiHeadSelfAttention(nn.Module):
 		:return: The attention weighted output as linear combination of v
 		"""
 		# DONE: define the forward pass of the multi-head-attention here
-		q = th.einsum('ij, jlm -> ilm', x, self.W_Q) # x @ self.W_Q  # seq_len, n_heads, d_model
+		x = th.cat((x, th.ones((x.shape[0],1)).to(x.device)), 1)# pad with a column of ones to model biases
+		q = th.einsum('ij, jlm -> ilm', x, self.W_Q) # seq_len, n_heads, d_model / n_heads
 		k = th.einsum('ij, jlm -> ilm', x, self.W_K)
 		v = th.einsum('ij, jlm -> ilm', x, self.W_V)
 
 		results = []
 		for head in range(self.n_heads):
-			att, _ = self.attention(q[:,head,:], k[:,head,:], v[:,head,:], mask=mask)  # seq_len, d_model
+			att, _ = self.attention(q[:,head,:], k[:,head,:], v[:,head,:], mask=mask)  # seq_len, d_model / n_heads
 			results.append(att)
-		concatted = th.concat(results, dim=1)  # seq_len, d_model*n_heads
+		concatted = th.concat(results, dim=1)  # seq_len, d_model
+		concatted = th.cat((concatted, th.ones((concatted.shape[0], 1)).to(concatted.device)), 1)  # pad with a column of ones to model biases
 		res = concatted @ self.W_O
 		return self.dropout_layer(res)
 
@@ -133,8 +135,10 @@ class DecoderLayer(nn.Module):
 		# and therefore do not require the Encoder-Decoder Attention module
 		super().__init__()
 		self.att_mod = MultiHeadSelfAttention(n_heads, d_model, dropout)
+		self.norm1 = th.nn.LayerNorm(d_model)
 		self.ff_mod = FeedForward(d_model, linear_layer_size, dropout)
-		# we do not use another droupout layer because we already have dropout at the end of the ff module
+		self.norm2 = th.nn.LayerNorm(d_model)
+		self.dropout_layer = th.nn.Dropout(dropout)
 
 	def forward(self, x, mask):
 		"""
@@ -147,8 +151,10 @@ class DecoderLayer(nn.Module):
 		# DONE: define the forward pass. Keep in mind to produce residuals
 		#		instead of the absolute values directly.
 		x = x + self.att_mod(x, mask)
+		x = self.norm1(x)
 		x = x + self.ff_mod(x)
-
+		x = self.norm2(x)
+		x = self.dropout_layer(x)
 		return x
 
 
@@ -177,7 +183,7 @@ class Model(nn.Module):
 		for _ in range(num_blocks):
 			self.blocks.append(DecoderLayer(n_heads, d_model, linear_layer_size, dropout))
 		self.lin_out = th.nn.Linear(d_model, d_one_hot)
-		self.softmax = th.nn.Softmax()
+		self.softmax = th.nn.Softmax(dim=1)
 
 	def forward(self, x):
 		"""
@@ -189,7 +195,7 @@ class Model(nn.Module):
 		x = self.lin_in(x)
 		for block in self.blocks:
 			x = block(x, self._mask(x))
-		x = self.lin_out(x)
+		x = self.lin_out(x)  # x has shape (sentence_length, alphabet)
 		x = self.softmax(x)
 		return x
 		
@@ -201,6 +207,6 @@ class Model(nn.Module):
 		device, seq_len = x.device, x.shape[0]    
 
 		# DONE: implement the mask for the decoder here
-		mask = (-np.inf * th.ones(seq_len, seq_len)).triu(diagonal=1).to(device)  # maybe duplicate
-
+		mask = (-np.inf * th.ones(seq_len, seq_len)).triu(diagonal=1).to(device)
+		#mask = th.zeros((seq_len, seq_len)).to(device)  # no mask
 		return mask

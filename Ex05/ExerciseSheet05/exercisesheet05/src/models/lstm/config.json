@@ -19,7 +19,7 @@
 	},
 
 	"model": {
-		"name": "lstm_lr0005",
+		"name": "lstm_lr0005_epoch600_error0.03886",
 		"d_one_hot": 45,
 		"d_lstm": 128,
 		"num_lstm_layers": 2

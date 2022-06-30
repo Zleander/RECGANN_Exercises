@@ -54,7 +54,7 @@ def run_testing():
     # Load the trained weights from the checkpoints into the model
     model.load_state_dict(th.load(os.path.join(os.path.abspath(""),
                                               "checkpoints",
-                                               cfg.model.name,
+                                               "lstm_lr0005",#cfg.model.name,
                                                cfg.model.name+".pt"),
                                   map_location=device))
     model.eval()

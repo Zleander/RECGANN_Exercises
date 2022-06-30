@@ -108,10 +108,9 @@ def run_training():
 
             # TODO: Generate prediction
             y_hat = model(net_input.squeeze())
-
             # Convert target one hot to indices (required for CE-loss)
-            # target = net_label[:, 0].data.topk(1)[1][:, 0]
-            loss = criterion(y_hat.squeeze(), net_label.squeeze())
+            target = net_label[:, 0].data.topk(1)[1][:, 0]
+            loss = criterion(y_hat.squeeze(), target)
             loss.backward()
             optimizer.step()
             sequence_errors.append(loss.item())

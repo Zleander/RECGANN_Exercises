@@ -20,7 +20,7 @@
 	},
 
 	"model": {
-		"name": "transformer1_lr=5e-3",
+		"name": "transformer1_lr=5e-3_epoch50_error3.58147",
 		"d_one_hot": 45,
 		"n_heads": 8,
 		"d_model": 128,

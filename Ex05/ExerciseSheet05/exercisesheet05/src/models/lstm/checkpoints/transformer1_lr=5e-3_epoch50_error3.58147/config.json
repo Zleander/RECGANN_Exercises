@@ -1,0 +1,31 @@
+{
+ "general": {
+  "device": "CPU"
+ },
+ "training": {
+  "save_model": true,
+  "epochs": 200,
+  "learning_rate": 0.005,
+  "scheduler": true
+ },
+ "testing": {
+  "teacher_forcing_steps": 30,
+  "closed_loop_steps": 100
+ },
+ "dataset": {
+  "name": "chapter1"
+ },
+ "model": {
+  "name": "transformer1_lr=5e-3_epoch50_error3.58147",
+  "d_one_hot": 45,
+  "n_heads": 8,
+  "d_model": 128,
+  "linear_layer_size": 512,
+  "num_blocks": 4
+ },
+ "results": {
+  "current_epoch": 1,
+  "current_training_error": 3.6599329892469914,
+  "lowest_train_error": 3.6599329892469914
+ }
+}

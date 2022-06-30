@@ -55,8 +55,8 @@ def run_testing():
     # Load the trained weights from the checkpoints into the model
     model.load_state_dict(th.load(os.path.join(os.path.abspath(""),
                                               "checkpoints",
-                                               cfg.model.name,
-                                               cfg.model.name+".pt"),
+                                              "transformer1_lr=5e-3",#cfg.model.name,
+                                              cfg.model.name+".pt"),
                                   map_location=device))
     model.eval()
 
@@ -89,8 +89,9 @@ def run_testing():
         x = net_input[:tf_steps]
 
         # Generate predictions
-        y_hat = model(x)
+        y_hat = model(x.squeeze())
         y_hat = nn.functional.softmax(y_hat, dim=-1)
+        y_hat=y_hat[:,None,:]
         y_hat_last = th.tensor(
             [[helpers.softmax_to_one_hot(soft=y_hat[-1, 0])]]
         ).to(device=device)
@@ -101,8 +102,9 @@ def run_testing():
         for t in range(cl_steps):
 
             # Generate prediction
-            y_hat = model(x)
+            y_hat = model(x.squeeze())
             y_hat = nn.functional.softmax(y_hat, dim=-1)
+            y_hat = y_hat[:, None, :]
             y_hat_last = th.tensor(
                 [[helpers.softmax_to_one_hot(soft=y_hat[-1, 0])]]
             ).to(device=device)
