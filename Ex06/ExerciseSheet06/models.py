@@ -27,9 +27,21 @@ class SimpleModel:
 class NeuralNetworkModel(torch.nn.Module):
     def __init__(self, input_size, hidden_size, output_size):
         super(NeuralNetworkModel, self).__init__()
-        # TODO: implement me
-        pass
+        
+        self.input_layer = torch.nn.Linear(input_size, hidden_size)
+        self.hidden_layer = torch.nn.Linear(hidden_size, hidden_size)
+        self.output_layer = torch.nn.Linear(hidden_size, output_size)
+        self.activation = torch.nn.ReLU()
+
+
 
     def forward(self, x):
-        # TODO: implement me
-        pass
+
+        x = self.input_layer(x)
+        x = self.activation(x)
+        x = self.hidden_layer(x)
+        x = self.activation(x)
+        x = self.output_layer(x)
+
+        return x
+        

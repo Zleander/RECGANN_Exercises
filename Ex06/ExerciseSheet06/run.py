@@ -128,8 +128,8 @@ planner_cem = planners.CrossEntropyMethod(
 
 # Initialize optimizer
 if train:
-    # TODO: define optimizer
-    optimizer = None
+    # DONE: define optimizer
+    optimizer = torch.optim.Adam(model.parameters())
 
 
 # Adapt if necessary

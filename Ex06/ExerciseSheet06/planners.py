@@ -69,39 +69,40 @@ class CrossEntropyMethod(Planner):
 
     def __call__(self, model, observation):
 
-        for _ in range(self._num_inference_cycles):
-            
-            # DONE: implement CEM#
-            # sampling
-            actions = torch.zeros((self._horizon, self._num_predictions-self._num_keep_elites, self._action_size)) # [time, batch, action]
-            for i in range(self._horizon):
-                actions[i] = self._dist.sample((self._num_predictions-self._num_keep_elites,)) * self._var[i] + self._mu[i]
+        with torch.no_grad():
+            for _ in range(self._num_inference_cycles):
 
-            actions = actions.permute(1, 0, 2) # [batch, time, action]
-            actions = torch.cat([self._last_actions, actions])
-            # TODO ask about last_actions
+                # DONE: implement CEM#
+                # sampling
+                actions = torch.zeros((self._horizon, self._num_predictions, self._action_size)) # [time, batch, action]
+                for i in range(self._horizon):
+                    actions[i] = self._dist.sample((self._num_predictions,)) * self._var[i] + self._mu[i]
 
-            actions = self._policy_handler(actions)
+                actions = actions.permute(1, 0, 2) # [batch, time, action]
+                # actions = torch.cat([self._last_actions, actions])
+                # TODO ask about last_actions
 
-            # loss calculation
-            losses = torch.zeros(self._num_predictions)
-            for i in range(self._num_predictions):
-                observations = self.predict(model, actions[i], observation) # [50, 2]
-                losses[i] = self._criterion(torch.stack(observations)[:,None,:])
+                actions = self._policy_handler(actions)
 
-            # sorting and extracting indices
-            indices = np.argsort(losses)
-            sorted_actions = actions[indices]
-            elites = sorted_actions[:self._num_elites]
-            self._last_actions = sorted_actions[:self._num_keep_elites] # [batch, time, action] [2, 50, 2]
+                # loss calculation
+                losses = torch.zeros(self._num_predictions)
+                for i in range(self._num_predictions):
+                    observations = self.predict(model, actions[i], observation) # [50, 2]
+                    losses[i] = self._criterion(torch.stack(observations)[:,None,:])
 
-            # calc new 
-            self._mu = torch.mean(elites, dim=0)
-            self._var = torch.var(elites, dim=0)
+                # sorting and extracting indices
+                indices = np.argsort(losses)
+                sorted_actions = actions[indices]
+                elites = sorted_actions[:self._num_elites]
+                self._last_actions = sorted_actions[:self._num_keep_elites] # [batch, time, action] [2, 50, 2]
 
-            shape = (self._horizon, self._action_size)
-            assert self._mu.shape == shape, f"Shape of mu should be {shape}- is {self._mu.shape}"
-            assert self._var.shape == shape, f"Shape of var should be {shape} - is {self._var.shape}"
+                # calc new 
+                self._mu = torch.mean(elites, dim=0)
+                self._var = torch.var(elites, dim=0)
+
+                shape = (self._horizon, self._action_size)
+                assert self._mu.shape == shape, f"Shape of mu should be {shape}- is {self._mu.shape}"
+                assert self._var.shape == shape, f"Shape of var should be {shape} - is {self._var.shape}"
 
         # Policy has been optimized; this optimized policy is now propagated
         # once more in forward direction in order to generate the final
