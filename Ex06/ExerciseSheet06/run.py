@@ -219,7 +219,7 @@ while epoch < epochs:
             os.path.join("models", model_id, f"{epoch:04d}.pth")
         )
     epoch += 1
-    print()
+    #print()
 
 
 # Create plots of the loss with log scale
