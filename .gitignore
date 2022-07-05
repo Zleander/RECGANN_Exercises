@@ -29,7 +29,8 @@
 hs_err_pid*
 
 # python stuff
-/__pychache__/
+/__pychache__/*
+*.pyc
 
 # PyCharm bs
 .idea
