@@ -1,6 +1,5 @@
 import torch
 
-
 class SimpleModel:
 
     def __init__(self, env):
@@ -27,7 +26,7 @@ class SimpleModel:
 class NeuralNetworkModel(torch.nn.Module):
     def __init__(self, input_size, hidden_size, output_size):
         super(NeuralNetworkModel, self).__init__()
-        
+
         self.input_layer = torch.nn.Linear(input_size, hidden_size)
         self.hidden_layer = torch.nn.Linear(hidden_size, hidden_size)
         self.output_layer = torch.nn.Linear(hidden_size, output_size)
@@ -36,6 +35,8 @@ class NeuralNetworkModel(torch.nn.Module):
 
 
     def forward(self, x):
+        
+        torch.div(x, torch.Tensor([1.5, 1.5, 5, 5, 3.14, 5, 1, 1]))
 
         x = self.input_layer(x)
         x = self.activation(x)

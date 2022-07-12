@@ -94,9 +94,9 @@ class CrossEntropyMethod(Planner):
 
                 # sorting and extracting indices
                 indices = np.argsort(losses)
-                sorted_actions = actions[indices]
-                elites = sorted_actions[:self._num_elites]
-                self._last_actions = sorted_actions[:self._num_keep_elites] # [elites, time, action]
+                actions = actions[indices]
+                elites = actions[:self._num_elites]
+                self._last_actions = actions[:self._num_keep_elites] # [elites, time, action]
 
                 # calc new 
                 self._mu = torch.mean(elites, dim=0)

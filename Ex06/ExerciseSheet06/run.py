@@ -33,11 +33,11 @@ seed = args.seed
 assert(not(use_simple_environment and train))
 
 # Adapt if necessary
-epochs = 3000
+epochs = 2999
 sequence_length = 200
 
 model_id = "test2"
-vid_id = "landing_2"
+vid_id = "norm_1"
 state_path = None if train else f"models/{model_id}/{epochs-1:04d}.pth"
 
 
@@ -81,24 +81,70 @@ def criterion_simple_environment(observation):
     loss_pos = torch.nn.functional.mse_loss(observation, target_pos)
     return loss_pos
 
-def criterion_lunar_lander(observation):
+def criterion_lunar_lander(observation, print_losses=False):
     # Adapt this if necessary
     target_pos_x = torch.Tensor([0]).repeat(observation.shape[0], observation.shape[1], 1)
     target_pos_y = torch.Tensor([0]).repeat(observation.shape[0], observation.shape[1], 1)
     target_ang = torch.Tensor([0]).repeat(observation.shape[0], observation.shape[1], 1)
 
     loss_pos_x = 2.4 * torch.nn.functional.mse_loss(observation[..., 0:1], target_pos_x)
-    loss_pos_y = 0.2 * torch.nn.functional.mse_loss(observation[..., 1:2], target_pos_y)
-    loss_ang = 1.4 * torch.nn.functional.mse_loss(observation[..., 4:5], target_ang)
+    loss_pos_y = 1 * torch.nn.functional.mse_loss(observation[..., 1:2], target_pos_y)
+    loss_ang = 20 * torch.nn.functional.mse_loss(observation[..., 4:5], target_ang)
 
     target_vel_y = torch.Tensor([-0.1]).repeat(observation.shape[0], observation.shape[1], 1)
+    #target_vel_y[observation[..., 1:2].squeeze() < 0.3] = -0.02 # .1
     loss_vel_y = torch.nn.functional.mse_loss(observation[..., 3:4], target_vel_y, reduction="none").squeeze()
-    factor_vel_y = torch.zeros(target_pos_y.shape[0])
-    factor_vel_y[observation[..., 1:2].squeeze() < 0.5] = 0.3
-    factor_vel_y[observation[..., 1:2].squeeze() < 0.2] = 0.5
+    factor_vel_y = torch.ones(target_pos_y.shape[0]) * 2
+    factor_vel_y[observation[..., 1:2].squeeze() < 0] = 3 # .3
+    # factor_vel_y[observation[..., 1:2].squeeze() < 0.2] = 2 # .5
+    #factor_vel_y[observation[..., 1:2].squeeze() < 0.1] = 2 # .5
     loss_vel_y = (factor_vel_y * loss_vel_y).mean()
 
-    loss = loss_pos_x + loss_pos_y + loss_vel_y + loss_ang
+    target_vel_x = torch.Tensor([-0.1]).repeat(observation.shape[0], observation.shape[1], 1)
+    loss_vel_x = torch.nn.functional.mse_loss(observation[..., 2:3], target_vel_x, reduction="none").squeeze()
+    factor_vel_x = torch.zeros(target_pos_y.shape[0])
+    factor_vel_x[observation[..., 1:2].squeeze() < 0.3] = 0.1
+    factor_vel_x[observation[..., 1:2].squeeze() < 0.2] = 0.2
+    loss_vel_x = (factor_vel_x * loss_vel_x).mean()
+
+    loss = loss_pos_x + loss_pos_y + loss_vel_y + loss_vel_x + loss_ang
+
+    # Adapt this if necessary
+    # target_pos_x = torch.Tensor([0]).repeat(observation.shape[0], observation.shape[1], 1)
+    # target_pos_y = torch.Tensor([0]).repeat(observation.shape[0], observation.shape[1], 1)
+    # target_ang = torch.Tensor([0]).repeat(observation.shape[0], observation.shape[1], 1)
+
+    # loss_pos_x = 2.4 * torch.nn.functional.mse_loss(observation[..., 0:1], target_pos_x) #2.4
+    # loss_pos_y = 1 * torch.nn.functional.mse_loss(observation[..., 1:2], target_pos_y) # .2
+    # loss_ang = 10 * torch.nn.functional.mse_loss(observation[..., 4:5], target_ang) # 1.4
+
+    # factor_ang = torch.ones(target_pos_y.shape[0])
+    # factor_ang[observation[..., 1:2].squeeze() < 0.4] = 2
+
+    # factor_pos_y = torch.ones(target_pos_y.shape[0])
+    # factor_pos_y[observation[..., 1:2].squeeze() < 0.4] = .1
+
+    # target_vel_y = torch.Tensor([-0.01]).repeat(observation.shape[0], observation.shape[1], 1) #-.1
+    # loss_vel_y = torch.nn.functional.mse_loss(observation[..., 3:4], target_vel_y, reduction="none").squeeze() # 1
+    # factor_vel_y = torch.zeros(target_pos_y.shape[0]) # 0
+    # factor_vel_y[observation[..., 1:2].squeeze() < 0.4] = 5 # .5
+
+    # target_vel_x = torch.Tensor([0]).repeat(observation.shape[0], observation.shape[1], 1) #-.1
+    # loss_vel_x = torch.nn.functional.mse_loss(observation[..., 2:3], target_vel_x, reduction="none").squeeze() # 1
+    # factor_vel_x = torch.zeros(target_pos_y.shape[0]) # 0
+    # # factor_vel_x[observation[..., 1:2].squeeze() < 0.5] = 1 # .3
+    # factor_vel_x[observation[..., 1:2].squeeze() < 0.4] = 5 # .5
+    
+    # loss_vel_x = (factor_vel_x * loss_vel_x).mean()
+    # loss_vel_y = (factor_vel_y * loss_vel_y).mean()
+    # loss_pos_y = (loss_pos_y * loss_pos_y).mean()
+    # loss_ang = (loss_ang * factor_ang).mean()
+
+    # loss = loss_pos_x + loss_pos_y + loss_vel_y + loss_ang + loss_vel_x
+
+    if print_losses:
+        print(f"loss_pos_x:{loss_pos_x.item():.4f}, loss_pos_y:{loss_pos_y.item():.4f}, loss_vel_x:{loss_vel_x.item():.4f}, loss_vel_y:{loss_vel_y.item():.4f}, loss_ang:{loss_ang.item():.4f}, loss:{loss.item():.4f}, pos_y:{observation[0,0,1:2].item():.4f}, vel_y:{observation[0,0,3:4].item():.4f}")
+    
     return loss
 
 if use_simple_environment:
@@ -109,7 +155,7 @@ else:
 
 # Initialize planner
 horizon = 50
-num_inference_cycles = 1
+num_inference_cycles = 5
 num_predictions = 50
 num_elites = 5
 num_keep_elites = 2
@@ -180,8 +226,8 @@ while epoch < epochs:
                     actions, _ = planner_random(model, observation_old)
             else:
                 # Ignore whether the legs touch the ground during planning
-                actions, _ = planner_cem(model, observation_old[..., :-2])  # :-2 to Ignore leg contact
-
+                actions, observations = planner_cem(model, observation_old[..., :-2])  # :-2 to Ignore leg contact
+                criterion_lunar_lander(torch.stack(observations)[:,None,:], print_losses=True)
         action = actions[0]
         if train:
             inp = torch.cat([observation_old[..., :-2], torch.Tensor(action)])  # :-2 to Ignore leg contact
@@ -194,7 +240,7 @@ while epoch < epochs:
             img = env.render(mode="rgb_array")
             plt.imshow(img)
             os.makedirs(f"images/{vid_id}", exist_ok=True)
-            plt.savefig(os.path.join(f"images/{vid_id}/", f"env_{counter:05d}.png"))
+            plt.savefig(os.path.join(f"images/{vid_id}/", f"env_{(counter):05d}.png"))
             plt.close()
         if train and counter % 50 == 49:
             label = observation
