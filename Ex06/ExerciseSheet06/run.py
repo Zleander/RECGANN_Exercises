@@ -32,8 +32,13 @@ seed = args.seed
 
 assert(not(use_simple_environment and train))
 
-model_id = "test"
-state_path = None if train else "models/test/2999.pth"
+# Adapt if necessary
+epochs = 3000
+sequence_length = 200
+
+model_id = "test2"
+vid_id = "landing_2"
+state_path = None if train else f"models/{model_id}/{epochs-1:04d}.pth"
 
 
 torch.manual_seed(seed)
@@ -104,7 +109,7 @@ else:
 
 # Initialize planner
 horizon = 50
-num_inference_cycles = 3
+num_inference_cycles = 1
 num_predictions = 50
 num_elites = 5
 num_keep_elites = 2
@@ -130,11 +135,6 @@ planner_cem = planners.CrossEntropyMethod(
 if train:
     # DONE: define optimizer
     optimizer = torch.optim.Adam(model.parameters())
-
-
-# Adapt if necessary
-epochs = 3000
-sequence_length = 200
 
 
 epoch = 0
@@ -193,7 +193,8 @@ while epoch < epochs:
         if record:
             img = env.render(mode="rgb_array")
             plt.imshow(img)
-            plt.savefig(os.path.join("images", f"env_{counter:05d}.png"))
+            os.makedirs(f"images/{vid_id}", exist_ok=True)
+            plt.savefig(os.path.join(f"images/{vid_id}/", f"env_{counter:05d}.png"))
             plt.close()
         if train and counter % 50 == 49:
             label = observation
